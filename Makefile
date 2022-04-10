@@ -13,4 +13,4 @@ push: login
 	docker push $(account).dkr.ecr.us-east-1.amazonaws.com/$(repo):$(version)
 
 deploy:
-	kubectl apply -f kubernetes/deploy.yaml
+	cat kubernetes/deploy.yaml | sed "s/IMAGEVERSION/$(version)/g;s/ACCOUNT/$(account)/g" | kubectl apply -f -
