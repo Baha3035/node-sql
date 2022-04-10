@@ -25,10 +25,17 @@ spec:
 ) {
     node(POD_LABEL) {
       checkout scm
+      properties([
+        pipelineTriggers([
+          [$class: 'GitHubPushTrigger'], // this means to trigger a build
+          pollSCM('*/1 * * * *'), // poll every 1 minute
+        ])
+      ])
       container('jenkins-slave') {
         sh '''
         make build
         make push
+        make deploy
         '''
       }
     }

@@ -11,3 +11,6 @@ login:
 push: login
 	docker tag $(repo):$(version) $(account).dkr.ecr.us-east-1.amazonaws.com/$(repo):$(version)
 	docker push $(account).dkr.ecr.us-east-1.amazonaws.com/$(repo):$(version)
+
+deploy:
+	kubectl apply -f kubernetes/deploy.yaml
