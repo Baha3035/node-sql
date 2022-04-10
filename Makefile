@@ -1,5 +1,5 @@
 repo = webapp
-version = 1.0
+version = 1.1
 account = $(shell aws sts get-caller-identity --query "Account" --output text)
 
 build:
