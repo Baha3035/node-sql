@@ -28,7 +28,7 @@ spec:
       properties([
         pipelineTriggers([
           [$class: 'GitHubPushTrigger'], // this means to trigger a build
-          pollSCM('*/1 * * * *'), // poll every 1 minute
+          // pollSCM('*/1 * * * *'), // poll every 1 minute
         ])
       ])
       container('jenkins-slave') {
